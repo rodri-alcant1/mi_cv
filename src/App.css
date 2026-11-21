@@ -210,7 +210,7 @@ body {
    !important obliga a que este color gane sobre ".seccion p" (que es gris),
    porque ambas reglas afectan al mismo <p>. */
 .empresa {
-  color: #7049d9 !important;
+  color: #7049d9;
   font-weight: bold;
 }
 
