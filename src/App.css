@@ -1,38 +1,236 @@
-.App {
-  text-align: center;
+/* Estilos generales */
+
+/* El selector * afecta a TODOS los elementos de la página.
+box-sizing: border-box hace que el padding y el borde se cuenten
+dentro del ancho/alto del elemento, así no se "desborda" al añadirlos. */
+* {
+  box-sizing: border-box;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/* Estilos de toda la página */
+body {
+  margin: 0;                          /* Quita el margen que el navegador pone por defecto */
+  padding: 20px;                      /* Espacio interior alrededor de todo el CV */
+  font-family: Arial, sans-serif;     /* Tipo de letra (si no existe Arial, usa una sans-serif) */
+  background-color: #e5e7eb;          /* Fondo gris claro de la página */
+  color: #333;                        /* Color de texto por defecto (gris oscuro) */
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+/* Contenedor principal (la parte blanca del CV) */
+.contenedor-principal {
+  max-width: 1100px;        /* Ancho máximo: en pantallas grandes no pasa de 1100px */
+  margin: auto;             /* Margen automático a los lados = centra la hoja */
+  background-color: white;  /* Fondo blanco */
+  border-radius: 8px;       /* Esquinas redondeadas */
+  overflow: hidden;         /* Oculta lo que se salga, así el encabezado respeta las esquinas redondeadas */
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+/* Encabezado (franja morada con foto y datos) */
+.header {
+  display: flex;               /* Coloca foto y datos en fila (uno al lado del otro) */
+  align-items: center;         /* Los centra verticalmente */
+  gap: 25px;                   /* Separación entre la foto y los datos */
+  padding: 30px;               /* Espacio interior del encabezado */
+  background-color: #7049d9;   /* Fondo morado */
+  color: white;                /* Texto en blanco */
+}
+
+/* Foto de perfil */
+.foto-perfil {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;          /* 50% convierte el cuadrado en un círculo */
+  border: 3px solid white;     /* Borde blanco alrededor de la foto */
+  object-fit: cover;           /* Recorta la imagen para llenar el círculo sin deformarla */
+}
+
+/* Nombre (h1 dentro de datos-personales) */
+.datos-personales h1 {
+  font-size: 28px;
+  margin: 0 0 10px;            /* Margen: arriba 0, lados 0, abajo 10px */
+}
+
+/* Profesión (h2 dentro de datos-personales) */
+.datos-personales h2 {
+  font-size: 18px;
+  font-weight: normal;         /* Quita la negrita que los h2 llevan por defecto */
+  margin: 0 0 15px;
+}
+
+/* Fila con email, teléfono y ubicación */
+.datos-contacto {
+  display: flex;               /* Los datos se colocan en fila */
+  flex-wrap: wrap;             /* Si no caben, pasan a la línea siguiente */
+  gap: 15px;                   /* Separación entre cada dato */
+  font-size: 12px;
+}
+
+/* Columnas de izquierda y derecha  */
+.contenido {
+  display: grid;                      /* Usa una cuadrícula (grid) */
+  grid-template-columns: 35% 65%;     /* Dos columnas: izquierda 35% y derecha 65% */
+  gap: 15px;                          /* Espacio entre columnas */
+  padding: 30px;
+}
+
+.columna-izquierda,
+.columna-derecha {
+  min-width: 0;   /* Evita que el contenido largo ensanche la columna y rompa el diseño */
+}
+
+/* Secciones (bloques "Sobre mí", "Habilidades"...) */
+.seccion {
+  margin-bottom: 25px;   /* Espacio entre una sección y la siguiente */
+}
+
+/* Títulos de cada sección */
+.titulo-seccion {
+  font-size: 19px;
+  color: #333;
+  border-left: 3px solid #7049d9;   /* Barra morada a la izquierda del título */
+  padding-left: 10px;               /* Separa el texto de la barra */
+  margin-bottom: 15px;
+}
+
+/* Textos */
+/* Todos los párrafos dentro de una sección */
+.seccion p {
+  font-size: 13px;
+  line-height: 1.6;    /* Altura de línea: hace el texto más fácil de leer */
+  color: #666;         /* Gris medio */
+}
+
+/* Habilidades (barras de progreso) */
+.habilidad {
+  margin-bottom: 15px;
+}
+
+/* Línea con el nombre de la habilidad y su nivel */
+.habilidad-info {
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;   /* Nombre a la izquierda, nivel a la derecha */
+  font-size: 12px;
+  margin-bottom: 6px;
+}
+
+/* Barra de fondo (gris), que representa el 100% */
+.barra {
+  height: 7px;
+  background-color: #ddd;
+  border-radius: 5px;
+}
+
+/* Parte para rellenar de la barra */
+.progreso {
+  height: 7px;
+  background-color: #7049d9;
+  border-radius: 5px;
+}
+
+/* Porcentaje de nivel */
+.python {
+  width: 50%;
+}
+
+.java {
+  width: 35%;
+}
+
+.html {
+  width: 60%;
+}
+
+.react {
+  width: 45%;
+}
+
+.office {
+  width: 80%;
+}
+
+/* Idiomas */
+.idioma {
+  display: flex;
+  justify-content: space-between;   /* Idioma a la izquierda, nivel a la derecha */
+  font-size: 13px;
+  margin-bottom: 12px;
+}
+
+/* Etiqueta del nivel */
+.nivel {
+  background-color: #e9e3ff;   /* Fondo lila claro */
+  color: #7049d9;              /* Texto morado */
+  padding: 4px 10px;             /* Espacio interior: 4px arriba/abajo, 10px a los lados */
+  border-radius: 10px;
+  font-size: 11px;
+}
+
+/* Certificación (tarjeta) */
+.tarjeta-certificacion {
+  background-color: #f5f3ff;        /* Fondo lila muy claro */
+  border: 1px solid #ddd5ff;        /* Borde fino lila */
+  padding: 12px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+}
+
+.tarjeta-certificacion h3 {
+  font-size: 13px;
+  margin: 0 0 5px;
+}
+
+.tarjeta-certificacion p {
+  font-size: 11px;
+  margin: 0;
+}
+
+/* Experiencia profesional */
+.experiencia {
+  border-left: 3px solid #7049d9;   /* Línea morada a la izquierda (estilo línea de tiempo) */
+  padding-left: 15px;
+  margin-bottom: 25px;
+}
+
+/* Fila con el puesto y el periodo (ej: "1 año") */
+.experiencia-cabecera {
+  display: flex;
+  justify-content: space-between;   /* Puesto a la izquierda, periodo a la derecha */
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  gap: 10px;
 }
 
-.App-link {
-  color: #61dafb;
+/* Títulos de puesto (experiencia) y de estudios (educación) */
+.experiencia h3,
+.educacion h3 {
+  font-size: 15px;
+  margin: 5px 0;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* Nombre de la empresa o centro.
+   !important obliga a que este color gane sobre ".seccion p" (que es gris),
+   porque ambas reglas afectan al mismo <p>. */
+.empresa {
+  color: #7049d9 !important;
+  font-weight: bold;
+}
+
+/* Etiqueta con la duración (ej: "5 meses") */
+.periodo {
+  background-color: #eee;
+  padding: 5px 10px;
+  border-radius: 10px;
+  font-size: 11px;
+}
+
+/* Educación */
+.educacion {
+  border-left: 3px solid #3b82f6;   /* Línea azul para distinguirla de la experiencia */
+  padding-left: 15px;
+  margin-bottom: 20px;
+}
+
+/* Texto de fecha o estado */
+.fecha {
+  font-size: 11px;
+  color: #777;
 }
